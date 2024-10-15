@@ -1,0 +1,56 @@
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres:12
+    command: -p 5432
+    restart: always
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - postgresql:/var/lib/postgresql/data
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    networks:
+      - POSTGRES
+      - PG_ADMIN
+
+  todennus-migration:
+    container_name: todennus-migration
+    image: xybor/todennus-migration:latest
+    command: "--postgres"
+    ports:
+      - 8080:8080
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_LOGLEVEL=1
+      - POSTGRES_HOST=postgresql
+      - POSTGRES_PORT=5432
+      - POSTGRES_TIMEZONE=UTC
+      - POSTGRES_SSLMODE=disable
+      - POSTGRES_RETRY_ATTEMPTS=3
+      - POSTGRES_RETRY_INTERVAL=5
+
+    networks:
+      - POSTGRES
+
+volumes:
+  postgresql:
+    name: postgresql
+  pgadmin:
+    name: pgadmin
+  redis:
+    name: redis
+
+networks:
+  PG_ADMIN:
+    name: PG_ADMIN
+  POSTGRES:
+    name: POSTGRES
+  REDIS:
+    name: REDIS
