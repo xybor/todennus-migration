@@ -59,7 +59,7 @@ var rootCommand = &cobra.Command{
 
 func main() {
 	rootCommand.Flags().StringArray("env", []string{".env"}, "environment file paths")
-	rootCommand.Flags().String("path", "./postgres/migration", "migration path")
+	rootCommand.Flags().String("path", "./", "migration path")
 
 	rootCommand.Flags().IntVar(&downFlag, "down", 0, "Migrate down with the number of steps")
 	rootCommand.Flags().BoolVar(&postgresFlag, "postgres", false, "Migrate postgres database")

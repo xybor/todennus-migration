@@ -18,6 +18,4 @@ WORKDIR /
 COPY --from=build /migrate /
 COPY --from=build /todennus-migration/postgres/migration /postgres/migration
 
-EXPOSE 8080
-
-ENTRYPOINT ["/migrate", "--env", "", "--path", "/"]
+ENTRYPOINT ["/migrate", "--env", "", "--path", "/", "--postgres"]
