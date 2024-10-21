@@ -8,8 +8,8 @@ require (
 	github.com/golang-migrate/migrate/v4 v4.18.1
 	github.com/lib/pq v1.10.9
 	github.com/spf13/cobra v1.8.1
-	github.com/xybor/todennus-config v0.0.0-20241015155428-b0b91d057736
-	github.com/xybor/x v1.8.1
+	github.com/xybor/todennus-config v1.1.0
+	github.com/xybor/x v1.9.0
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/gorm v1.25.12
 )
