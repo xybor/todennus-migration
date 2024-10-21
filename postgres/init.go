@@ -14,7 +14,7 @@ import (
 	gormlogger "gorm.io/gorm/logger"
 )
 
-func Initialize(ctx context.Context, config config.Config) (*gorm.DB, error) {
+func Initialize(ctx context.Context, config *config.Config) (*gorm.DB, error) {
 	loglevel := config.Variable.Postgres.LogLevel
 	newLogger := gormlogger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags),
