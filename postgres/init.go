@@ -2,7 +2,6 @@ package postgres
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -24,8 +23,6 @@ func Initialize(ctx context.Context, config *config.Config) (*gorm.DB, error) {
 			IgnoreRecordNotFoundError: true,
 		},
 	)
-
-	fmt.Println("DSN", config.Secret.Postgres.DSN)
 
 	var postgresDB *gorm.DB
 	var err error
